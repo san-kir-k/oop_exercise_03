@@ -11,7 +11,9 @@ Dot::Dot(const Dot& d) {
 
 std::istream& operator>>(std::istream& is, Dot& d) {
     is >> d.X >> d.Y;
+    return is;
 }
 std::ostream& operator<<(std::ostream& os, const Dot& d) {
     os << "(" << d.X << ", " << d.Y << ")"; 
+    return os;
 }
