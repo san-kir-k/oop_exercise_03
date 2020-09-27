@@ -13,7 +13,7 @@ class Octagon: public Figure {
         Dot getCenter() const override;
         void print(std::ostream& os) const override;
         double getArea() const override;
-        std::string getType() const;
+        std::string getType() const override;
         ~Octagon() {};
     private:
         Dot _d1, _d2, _d3, _d4, _d5, _d6, _d7, _d8;

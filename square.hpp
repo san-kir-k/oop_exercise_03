@@ -12,7 +12,7 @@ class Square: public Figure {
         Dot getCenter() const override;
         void print(std::ostream& os) const override;
         double getArea() const override;
-        std::string getType() const;
+        std::string getType() const override;
         ~Square() {};
     private:
         Dot _d1, _d2, _d3, _d4;
