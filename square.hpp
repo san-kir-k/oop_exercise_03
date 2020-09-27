@@ -2,6 +2,7 @@
 #include "figure.hpp"
 #include "dot.hpp"
 #include <iostream>
+#include <string>
 
 class Square: public Figure {
     public:
@@ -11,9 +12,11 @@ class Square: public Figure {
         Dot getCenter() const override;
         void print(std::ostream& os) const override;
         double getArea() const override;
+        std::string getType() const;
         ~Square() {};
     private:
         Dot _d1, _d2, _d3, _d4;
+        std::string _type;
 };
 
 std::ostream& operator<<(std::ostream& os, const Square& s); 

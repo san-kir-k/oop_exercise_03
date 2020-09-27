@@ -2,6 +2,7 @@
 #include "figure.hpp"
 #include "dot.hpp"
 #include <iostream>
+#include <string>
 
 class Octagon: public Figure {
     public:
@@ -12,9 +13,11 @@ class Octagon: public Figure {
         Dot getCenter() const override;
         void print(std::ostream& os) const override;
         double getArea() const override;
+        std::string getType() const;
         ~Octagon() {};
     private:
         Dot _d1, _d2, _d3, _d4, _d5, _d6, _d7, _d8;
+        std::string _type;
 };
 
 std::ostream& operator<<(std::ostream& os, const Octagon& o); 
