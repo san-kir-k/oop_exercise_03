@@ -24,8 +24,8 @@ Dot Octagon::getCenter() const {
     return Dot(x, y);
 }
 void Octagon::print(std::ostream& os) const {
-    os << "[ " << this->_d1 << this->_d2 << this->_d3 << this->_d4 <<
-    this->_d5 << this->_d6 << this->_d7 << this->_d8 << " ]";
+    os << "[ " << this->_d1 << ", " << this->_d2 << ", "  << this->_d3 << ", "  << this->_d4 <<
+    ", "  << this->_d5 << ", "  << this->_d6 << ", "  << this->_d7 << ", "  << this->_d8 << " ]";
 }
 double Octagon::getArea() const {
     return 0.5 * abs(_d1.X * _d2.Y + _d2.X * _d3.Y + _d3.X * _d4.Y + 
