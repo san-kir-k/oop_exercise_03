@@ -1,3 +1,4 @@
+// Киреев Александр Константинович 206
 #include "octagon.hpp"
 #include "cmath"
 
@@ -31,6 +32,7 @@ void Octagon::print(std::ostream& os) const {
     os << "[ " << this->_d1 << ", " << this->_d2 << ", "  << this->_d3 << ", "  << this->_d4 <<
     ", "  << this->_d5 << ", "  << this->_d6 << ", "  << this->_d7 << ", "  << this->_d8 << " ]";
 }
+// будем считать площадь через описанную окружность, тк порядок точек фигуры не влияет на ее результат
 double Octagon::getArea() const {
     Dot c = this->getCenter();
     double r = sqrt((this->_d1.X - c.X) * (this->_d1.X - c.X) + (this->_d1.Y - c.Y) * (this->_d1.Y - c.Y));

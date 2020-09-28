@@ -1,3 +1,4 @@
+// Киреев Александр Константинович 206
 #pragma once
 #include "figure.hpp"
 #include "dot.hpp"
@@ -17,7 +18,6 @@ class Square: public Figure {
         ~Square() = default;
     private:
         Dot _d1, _d2, _d3, _d4;
-        std::string _type;
 };
 
 std::ostream& operator<<(std::ostream& os, const Square& s); 

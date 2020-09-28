@@ -1,9 +1,11 @@
+// Киреев Александр Константинович 206
 #include <iostream>
 #include <vector>
 #include "octagon.hpp"
 #include "square.hpp"
 #include "triangle.hpp"
 
+// функция, которая вызывает для каждого элемента массива его 3 базовых метода
 void applyToVec(const std::vector<Figure*>& vec) {
     for (auto v : vec) {
         std::cout << ">>Next figure is " << v->getType() << ": " << std::endl;
@@ -15,6 +17,7 @@ void applyToVec(const std::vector<Figure*>& vec) {
     }
 }
 
+// считает суммарную площадь всех фигур в векторе
 double totalArea(const std::vector<Figure*>& vec) {
     double result = 0.0;
     for (auto v : vec) {
@@ -23,6 +26,7 @@ double totalArea(const std::vector<Figure*>& vec) {
     return result;
 }
 
+// мануал
 void help() {
     std::cout << "Command -- Description\n" <<
                 "1 [idx] -- Display figure by index in vector\n" <<

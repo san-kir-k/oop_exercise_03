@@ -1,3 +1,4 @@
+// Киреев Александр Константинович 206
 #pragma once
 #include "figure.hpp"
 #include "dot.hpp"
@@ -18,7 +19,6 @@ class Octagon: public Figure {
         ~Octagon() = default;
     private:
         Dot _d1, _d2, _d3, _d4, _d5, _d6, _d7, _d8;
-        std::string _type;
 };
 
 std::ostream& operator<<(std::ostream& os, const Octagon& o); 

@@ -1,3 +1,4 @@
+// Киреев Александр Константинович 206
 #include "triangle.hpp"
 #include "cmath"
 
@@ -22,6 +23,7 @@ Dot Triangle::getCenter() const {
 void Triangle::print(std::ostream& os) const {
     os << "[ " << this->_d1 << ", " << this->_d2 << ", "  << this->_d3 << " ]";
 }
+// будем считать площадь через описанную окружность, тк порядок точек фигуры не влияет на ее результат
 double Triangle::getArea() const {
     Dot c = this->getCenter();
     double r = sqrt((this->_d1.X - c.X) * (this->_d1.X - c.X) + (this->_d1.Y - c.Y) * (this->_d1.Y - c.Y));

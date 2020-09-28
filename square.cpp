@@ -1,3 +1,4 @@
+// Киреев Александр Константинович 206
 #include "square.hpp"
 #include "cmath"
 
@@ -24,6 +25,7 @@ Dot Square::getCenter() const {
 void Square::print(std::ostream& os) const {
     os << "[ " << this->_d1 << ", " << this->_d2 << ", "  << this->_d3 << ", "  << this->_d4 << " ]";
 }
+// будем считать площадь через описанную окружность, тк порядок точек фигуры не влияет на ее результат
 double Square::getArea() const {
     Dot c = this->getCenter();
     double r = sqrt((this->_d1.X - c.X) * (this->_d1.X - c.X) + (this->_d1.Y - c.Y) * (this->_d1.Y - c.Y));
