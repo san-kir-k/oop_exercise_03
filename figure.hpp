@@ -7,6 +7,6 @@ class Figure {
         virtual Dot getCenter() const = 0;
         virtual void print(std::ostream& os) const = 0;
         virtual double getArea() const = 0;
-        virtual std::string getType() const;
-        virtual ~Figure() {};
+        virtual std::string getType() const = 0;
+        virtual ~Figure() = default;
 };

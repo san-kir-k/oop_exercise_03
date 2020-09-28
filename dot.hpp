@@ -4,9 +4,10 @@
 struct Dot {
     public:
         double X, Y;
-        Dot(double x = 0.0, double y = 0.0);
+        Dot();
+        Dot(double x, double y);
         Dot(const Dot& d);
-        ~Dot() {}; 
+        ~Dot() = default; 
 };
 
 std::istream& operator>>(std::istream& is, Dot& d);

@@ -25,8 +25,9 @@ void Square::print(std::ostream& os) const {
     os << "[ " << this->_d1 << ", " << this->_d2 << ", "  << this->_d3 << ", "  << this->_d4 << " ]";
 }
 double Square::getArea() const {
-    return 0.5 * abs(_d1.X * _d2.Y + _d2.X * _d3.Y + _d3.X * _d4.Y + _d4.X * _d1.Y - 
-    (_d1.Y * _d2.X + _d2.Y * _d3.X + _d3.Y * _d4.X + _d4.Y * _d1.X));
+    Dot c = this->getCenter();
+    double r = sqrt((this->_d1.X - c.X) * (this->_d1.X - c.X) + (this->_d1.Y - c.Y) * (this->_d1.Y - c.Y));
+    return 2.0 * r * r;
 }
 std::string Square::getType() const {
     return _type;

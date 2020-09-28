@@ -6,6 +6,7 @@
 
 class Octagon: public Figure {
     public:
+        Octagon() = default;
         Octagon(const Dot& d1, const Dot& d2, const Dot& d3, const Dot& d4,
             const Dot& d5, const Dot& d6, const Dot& d7, const Dot& d8);
         Octagon(const Octagon& o);
@@ -14,7 +15,7 @@ class Octagon: public Figure {
         void print(std::ostream& os) const override;
         double getArea() const override;
         std::string getType() const override;
-        ~Octagon() {};
+        ~Octagon() = default;
     private:
         Dot _d1, _d2, _d3, _d4, _d5, _d6, _d7, _d8;
         std::string _type;

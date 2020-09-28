@@ -1,6 +1,10 @@
 #include "dot.hpp"
 
-Dot::Dot(double x = 0.0, double y = 0.0) {
+Dot::Dot() {
+    X = 0.0;
+    Y = 0.0;
+}
+Dot::Dot(double x, double y) {
     X = x;
     Y = y;
 }

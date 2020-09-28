@@ -32,10 +32,9 @@ void Octagon::print(std::ostream& os) const {
     ", "  << this->_d5 << ", "  << this->_d6 << ", "  << this->_d7 << ", "  << this->_d8 << " ]";
 }
 double Octagon::getArea() const {
-    return 0.5 * abs(_d1.X * _d2.Y + _d2.X * _d3.Y + _d3.X * _d4.Y + 
-    _d4.X * _d5.Y + _d5.X * _d6.Y + _d6.X * _d7.Y + _d7.X * _d8.Y + _d8.X * _d1.Y - 
-    (_d1.Y * _d2.X + _d2.Y * _d3.X + _d3.Y * _d4.X + 
-    _d4.Y * _d5.X + _d5.Y * _d6.X + _d6.Y * _d7.X + _d7.Y * _d8.X + _d8.Y * _d1.X));
+    Dot c = this->getCenter();
+    double r = sqrt((this->_d1.X - c.X) * (this->_d1.X - c.X) + (this->_d1.Y - c.Y) * (this->_d1.Y - c.Y));
+    return 2.0 * sqrt(2.0) * r * r;
 }
 std::string Octagon::getType() const {
     return _type;

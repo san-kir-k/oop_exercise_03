@@ -23,8 +23,9 @@ void Triangle::print(std::ostream& os) const {
     os << "[ " << this->_d1 << ", " << this->_d2 << ", "  << this->_d3 << " ]";
 }
 double Triangle::getArea() const {
-    return 0.5 * abs(_d1.X * _d2.Y + _d2.X * _d3.Y + _d3.X * _d1.Y - 
-    (_d1.Y * _d2.X + _d2.Y * _d3.X + _d3.Y * _d1.X));
+    Dot c = this->getCenter();
+    double r = sqrt((this->_d1.X - c.X) * (this->_d1.X - c.X) + (this->_d1.Y - c.Y) * (this->_d1.Y - c.Y));
+    return 3.0 * sqrt(3.0) * r * r / 4.0;
 }
 std::string Triangle::getType() const {
     return _type;
