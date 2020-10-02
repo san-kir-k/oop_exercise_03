@@ -1,6 +1,8 @@
 // Киреев Александр Константинович 206
 #include <iostream>
 #include <vector>
+#include <sstream>
+#include <string>
 #include "octagon.hpp"
 #include "square.hpp"
 #include "triangle.hpp"
@@ -25,7 +27,6 @@ double totalArea(const std::vector<Figure*>& vec) {
     }
     return result;
 }
-
 // мануал
 void help() {
     std::cout << "Command -- Description\n" <<
@@ -43,7 +44,16 @@ void mainLoop() {
     int command = 0, idx = 0, type = 0;
     std::vector<Figure*> vec;
     Figure* f;
-    while (std::cout << "Cmd: " && std::cin >> command && command != 8) {
+    std::string s;
+    while (std::cout << "Cmd: " && std::cin >> s) {
+        if (s.length() > 1) {
+            std::cout << "Invalid command." << std::endl;
+            continue;
+        }
+        std::stringstream ss(s);
+        ss >> command;
+        if (command == 8)
+            break;
         switch (command) {
             case 1:
                 std::cin >> idx;

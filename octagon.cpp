@@ -1,45 +1,56 @@
 // Киреев Александр Константинович 206
 #include "octagon.hpp"
 #include "cmath"
+#define _USE_MATH_DEFINES
 
-Octagon::Octagon(const Dot& d1, const Dot& d2, const Dot& d3,
-const Dot& d4, const Dot& d5, const Dot& d6, const Dot& d7, const Dot& d8) :
-_d1(d1), _d2(d2), _d3(d3), _d4(d4), _d5(d5), _d6(d6), _d7(d7), _d8(d8) {
+Octagon::Octagon(const Dot& center, const Dot& d): _center(center), _d(d) {
     _type = "Octagon";
 }
 Octagon::Octagon(const Octagon& o) {
-    this->_d1 = o._d1;
-    this->_d2 = o._d2;
-    this->_d3 = o._d3;
-    this->_d4 = o._d4;
-    this->_d5 = o._d5;
-    this->_d6 = o._d6;
-    this->_d7 = o._d7;
-    this->_d8 = o._d8;
+    this->_center = o._center;
+    this->_d = o._d;
     this->_type = o._type;
 }
 Octagon::Octagon(std::istream& is) {
-    is >> this->_d1 >> this->_d2 >> this->_d3 >> this->_d4 >>
-    this->_d5 >> this->_d6 >> this->_d7 >> this->_d8;
+    is >> this->_center >> this->_d;
     _type = "Octagon";
 }
 Dot Octagon::getCenter() const {
-    double x = (_d1.X + _d2.X + _d3.X + _d4.X + _d5.X + _d6.X + _d7.X + _d8.X) / 8.0;
-    double y = (_d1.Y + _d2.Y + _d3.Y + _d4.Y + _d5.Y + _d6.Y + _d7.Y + _d8.Y) / 8.0;
-    return Dot(x, y);
+    return this->_center;
 }
 void Octagon::print(std::ostream& os) const {
-    os << "[ " << this->_d1 << ", " << this->_d2 << ", "  << this->_d3 << ", "  << this->_d4 <<
-    ", "  << this->_d5 << ", "  << this->_d6 << ", "  << this->_d7 << ", "  << this->_d8 << " ]";
+    std::vector<Dot> dots;
+    this->getCoords(dots);
+    os << "[ " << dots[0];
+    for (int i = 1; i < dots.size(); ++i) {
+        os << ", " << dots[i];
+    }
+    os << " ]";
 }
 // будем считать площадь через описанную окружность, тк порядок точек фигуры не влияет на ее результат
 double Octagon::getArea() const {
-    Dot c = this->getCenter();
-    double r = sqrt((this->_d1.X - c.X) * (this->_d1.X - c.X) + (this->_d1.Y - c.Y) * (this->_d1.Y - c.Y));
+    double r = sqrt((this->_d.X - this->_center.X) * (this->_d.X - this->_center.X) +
+    (this->_d.Y - this->_center.Y) * (this->_d.Y - this->_center.Y));
     return 2.0 * sqrt(2.0) * r * r;
 }
 std::string Octagon::getType() const {
     return _type;
+}
+void Octagon::getCoords(std::vector<Dot>& dots) const {
+    double r = sqrt((this->_d.X - this->_center.X) * (this->_d.X - this->_center.X) +
+    (this->_d.Y - this->_center.Y) * (this->_d.Y - this->_center.Y));
+    double phi = acos(this->_d.X / r);
+    if (this->_d.X < 0) {
+        if (this->_d.Y < 0)
+            phi = -M_PI + phi;
+    } else {
+        if (this->_d.Y < 0)
+            phi = -phi;
+    }
+    for (int i = 0; i < 8; ++i) {
+        double angle = 2.0 * M_PI * i / 8.0;
+        dots.push_back(Dot(r * cos(angle + phi) + this->_center.X, r * sin(angle + phi) + this->_center.Y));
+    }
 }
 std::ostream& operator<<(std::ostream& os, const Octagon& o) {
     o.print(os);

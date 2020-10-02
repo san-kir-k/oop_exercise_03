@@ -4,20 +4,22 @@
 #include "dot.hpp"
 #include <iostream>
 #include <string>
+#include <vector>
 
 class Triangle: public Figure {
     public:
         Triangle() = default;
-        Triangle(const Dot& d1, const Dot& d2, const Dot& d3);
+        Triangle(const Dot& center, const Dot& d);
         Triangle(const Triangle& t);
         Triangle(std::istream& is);
         Dot getCenter() const override;
         void print(std::ostream& os) const override;
         double getArea() const override;
         std::string getType() const override;
+        void getCoords(std::vector<Dot>& dots) const;
         ~Triangle() = default;
     private:
-        Dot _d1, _d2, _d3;
+        Dot _center, _d;
 };
 
 std::ostream& operator<<(std::ostream& os, const Triangle& t); 

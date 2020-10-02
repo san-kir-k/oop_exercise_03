@@ -19,6 +19,7 @@ std::istream& operator>>(std::istream& is, Dot& d) {
     return is;
 }
 std::ostream& operator<<(std::ostream& os, const Dot& d) {
-    os << "(" << d.X << ", " << d.Y << ")"; 
+    std::cout.precision(3);
+    os << "(" << std::fixed <<  d.X << ", " << std::fixed <<  d.Y << ")"; 
     return os;
 }

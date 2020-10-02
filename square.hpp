@@ -4,20 +4,22 @@
 #include "dot.hpp"
 #include <iostream>
 #include <string>
+#include <vector>
 
 class Square: public Figure {
     public:
         Square() = default;
-        Square(const Dot& d1, const Dot& d2, const Dot& d3, const Dot& d4);
+        Square(const Dot& center, const Dot& d);
         Square(const Square& s);
         Square(std::istream& is);
         Dot getCenter() const override;
         void print(std::ostream& os) const override;
         double getArea() const override;
         std::string getType() const override;
+        void getCoords(std::vector<Dot>& dots) const;
         ~Square() = default;
     private:
-        Dot _d1, _d2, _d3, _d4;
+        Dot _center, _d;
 };
 
 std::ostream& operator<<(std::ostream& os, const Square& s); 
