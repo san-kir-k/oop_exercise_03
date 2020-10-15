@@ -39,12 +39,14 @@ std::string Triangle::getType() const {
 void Triangle::getCoords(std::vector<Dot>& dots) const {
     double r = sqrt((this->_d.X - this->_center.X) * (this->_d.X - this->_center.X) +
     (this->_d.Y - this->_center.Y) * (this->_d.Y - this->_center.Y));
-    double phi = acos(this->_d.X / r);
-    if (this->_d.X < 0) {
-        if (this->_d.Y < 0)
+    double lenX = this->_d.X - this->_center.X;
+    double lenY = this->_d.Y - this->_center.Y;
+    double phi = acos(lenX / r);
+    if (lenX < 0) {
+        if (lenY < 0)
             phi = -M_PI + phi;
     } else {
-        if (this->_d.Y < 0)
+        if (lenY < 0)
             phi = -phi;
     }
     for (int i = 0; i < 3; ++i) {
